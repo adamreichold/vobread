@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
             break;
         case 't':
             title = atoi(optarg);
-            if (title < 0) {
+            if (title <= 0) {
                 fprintf(stderr, "Invalid title `%s`\n", optarg);
                 goto out;
             }
@@ -94,12 +94,12 @@ int main(int argc, char** argv) {
         goto out;
     }
 
-    if (title >= ifo->tt_srpt->nr_of_srpts) {
+    if (title > ifo->tt_srpt->nr_of_srpts) {
         fprintf(stderr, "Title %d is out of range\n", title);
         goto out;
     }
 
-    dvd_file = DVDOpenFile(dvd, ifo->tt_srpt->title[title].title_set_nr, DVD_READ_TITLE_VOBS);
+    dvd_file = DVDOpenFile(dvd, ifo->tt_srpt->title[title - 1].title_set_nr, DVD_READ_TITLE_VOBS);
     if (!dvd_file) {
         fprintf(stderr, "Failed to open VOB of title %d\n", title);
         goto out;
