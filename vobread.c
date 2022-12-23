@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
             break;
         default:
         case 'h':
-            fprintf(stderr, "Usage: %s [-d device] [-b buffer_size] [-t title] [-h]\n\n", argv[0]);
+            fprintf(stderr, "Usage: %s [-d device] [-b buffer_size] [-t title] [-i] [-h]\n\n", argv[0]);
             fprintf(stderr, "Reads all blocks of the given title from the given device and writes them to standard output.\n");
             goto out;
         }
