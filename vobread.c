@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     int opt;
     const char* device = "/dev/dvd";
     int buffer_size = 64 * 1024;
-    int title = 0;
+    int title = 1;
     bool info = false;
 
     dvd_reader_t* dvd = NULL;
@@ -105,7 +105,7 @@ int main(int argc, char** argv) {
         goto out;
     }
 
-    buffer = malloc(buffer_size / DVD_VIDEO_LB_LEN);
+    buffer = malloc(buffer_size);
     if (!buffer) {
         fprintf(stderr, "Failed to allocate buffer of %d bytes\n", buffer_size);
         goto out;
